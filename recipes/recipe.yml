@@ -15,13 +15,25 @@ modules:
   - type: files
     files:
       - source: system
-        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+        destination: /
+    snippets:
+      - 'cd $CONFIG_DIRECTORY/scripts && for script in *.sh; do [ -f "$script" ] && bash "$script"; done'
 
   - type: dnf
     install:
       packages:
+        - gnome-shell-extension-dash-to-panel
+        - gnome-shell-extension-just-perfection
+        - gnome-shell-extension-user-theme
+        - qt5ct
+        - qt5-qtstyleplugins
         - syncthing
         - waydroid
+        # Blue95 inspired
+        - wine-ms-sans-serif-fonts
+        - wine-tahoma-fonts
+        - https://github.com/felixrieseberg/clippy/releases/download/v0.4.3/Clippy-0.4.3-1.x86_64.rpm
+        - https://github.com/1j01/jspaint/releases/download/v1.0.0-beta.1/jspaint-1.0.0-Linux-x64.rpm
     remove:
       packages:
         - android-tools
@@ -51,6 +63,8 @@ modules:
           - net.waterfox.waterfox
           - com.vscodium.codium
           - org.telegram.desktop
+          # Blue95
+          - org.gtk.Gtk3theme.Chicago95
         remove: # replace default Firefox with Waterfox
           - org.mozilla.firefox
       - scope: user # Also add Flathub user repo, but no user packages
