@@ -16,8 +16,6 @@ modules:
     files:
       - source: system
         destination: /
-    snippets:
-      - 'cd $CONFIG_DIRECTORY/scripts && for script in *.sh; do [ -f "$script" ] && bash "$script"; done'
 
   - type: dnf
     install:
