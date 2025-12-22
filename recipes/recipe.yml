@@ -20,7 +20,7 @@ modules:
 
   - type: script
     scripts:
-      - files/scripts/install-nix.sh
+      - install-nix.sh
 
   - type: systemd
     system:
