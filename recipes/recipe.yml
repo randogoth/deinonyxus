@@ -18,10 +18,15 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
+  - type: script
+    scripts:
+      - files/scripts/install-nix.sh
+
   - type: systemd
-    user:
+    system:
       enabled:
-        - nix-toolbox-create.service
+        - nix-overlay.service
+        - nix-daemon.service
 
   - type: dnf
     install:
