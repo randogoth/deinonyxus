@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+image_ref="${NIX_TOOLBOX_IMAGE:-ghcr.io/thrix/nix-toolbox:42}"
+container_name="${NIX_TOOLBOX_CONTAINER:-nix-toolbox-42}"
+
+if ! command -v toolbox >/dev/null 2>&1; then
+  echo "toolbox not installed; skipping nix-toolbox setup" >&2
+  exit 0
+fi
+
+if ! command -v podman >/dev/null 2>&1; then
+  echo "podman not installed; skipping nix-toolbox setup" >&2
+  exit 0
+fi
+
+if podman container exists "$container_name"; then
+  exit 0
+fi
+
+echo "Creating $container_name from $image_ref"
+toolbox create --container "$container_name" --image "$image_ref"
