@@ -19,4 +19,4 @@ if podman container exists "$container_name"; then
 fi
 
 echo "Creating $container_name from $image_ref"
-toolbox create --container "$container_name" --image "$image_ref"
+distrobox create --name "$container_name" --image "$image_ref"
