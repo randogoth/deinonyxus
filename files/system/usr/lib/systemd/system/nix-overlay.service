@@ -1,0 +1,14 @@
+[Unit]
+Description=Mount OverlayFS for /nix
+DefaultDependencies=no
+After=local-fs.target
+Before=nix-daemon.service
+ConditionPathExists=/usr/bin/mount-nix-overlay.sh
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mount-nix-overlay.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,1 @@
+../system/usr/libexec/randofin-os/nixpkgs.sh

@@ -1,43 +1,42 @@
-# randofin-os &nbsp; [![bluebuild build badge](https://github.com/randogoth/randofin-os/actions/workflows/build.yml/badge.svg)](https://github.com/randogoth/randofin-os/actions/workflows/build.yml)
+# Deinonyxus &nbsp; [![bluebuild build badge](https://github.com/randogoth/deinonyxus/actions/workflows/build.yml/badge.svg)](https://github.com/randogoth/deinonyxus/actions/workflows/build.yml)
 
-See the [BlueBuild docs](https://blue-build.org/how-to/setup/) for quick setup instructions for setting up your own repository based on this template.
+*Deinonyxus* is a personal spin of the UBlue Bluefin DX image with experimental Nix package manager baked in (borrowed from the great [Daemonix](https://github.com/DXC-0/daemonix/) image) and a first-login bootstrap for `home-manager` packages.
 
-After setup, it is recommended you update this README to describe your custom image.
+## What’s inside
+- Base: `ghcr.io/ublue-os/bluefin-dx:latest` without Cockpit, Docker, Firefox, VS Code
+- Nix: multi-user install baked in; `nix-overlay.service` and `nix-daemon.service` enabled.
+- First-login bootstrap: installs nix packages `uv micro vscodium mc` via `home-manager`.
+- System packages added: `syncthing`, `waydroid`;
+- System flatpaks added: Telegram Desktop, Waterfox
 
-## Installation
+## First login behavior
+- Triggers for each non-root user on their first session.
+- Writes state to `~/.local/state/deinonyxus/nixpkgs-init.done`; delete it to rerun.
+- Bootstraps `~/.config/home-manager/home.nix` and runs `home-manager switch` with the package set above.
 
-> [!WARNING]  
-> [This is an experimental feature](https://www.fedoraproject.org/wiki/Changes/OstreeNativeContainerStable), try at your own discretion.
-
-To rebase an existing atomic Fedora installation to the latest build:
-
-- First rebase to the unsigned image, to get the proper signing keys and policies installed:
-  ```
-  rpm-ostree rebase ostree-unverified-registry:ghcr.io/randogoth/randofin-os:latest
-  ```
-- Reboot to complete the rebase:
-  ```
-  systemctl reboot
-  ```
-- Then rebase to the signed image, like so:
-  ```
-  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/randogoth/randofin-os:latest
-  ```
-- Reboot again to complete the installation
-  ```
-  systemctl reboot
-  ```
-
-The `latest` tag will automatically point to the latest build. That build will still always use the Fedora version specified in `recipe.yml`, so you won't get accidentally updated to the next major version.
-
-## ISO
-
-If build on Fedora Atomic, you can generate an offline ISO with the instructions available [here](https://blue-build.org/learn/universal-blue/#fresh-install-from-an-iso). These ISOs cannot unfortunately be distributed on GitHub for free due to large sizes, so for public projects something else has to be used for hosting.
-
-## Verification
-
-These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](https://github.com/sigstore/cosign). You can verify the signature by downloading the `cosign.pub` file from this repo and running the following command:
+## Install / Rebase
+> [!WARNING]
+> Uses the Fedora Atomic native container workflow.
 
 ```bash
-cosign verify --key cosign.pub ghcr.io/randogoth/randofin-os
+# First pull unsigned to get signing policy
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/randogoth/deinonyxus:latest
+systemctl reboot
+
+# Then move to the signed image
+rpm-ostree rebase ostree-image-signed:docker://ghcr.io/randogoth/deinonyxus:latest
+systemctl reboot
+```
+
+The `latest` tag always tracks the latest build for the Fedora base set in `recipes/recipe.yml`.
+
+## Building locally
+```bash
+bluebuild build --recipe recipes/recipe.yml
+```
+
+## Signature verification
+Images are signed with Sigstore/cosign. Verify with the repo's `cosign.pub`:
+```bash
+cosign verify --key cosign.pub ghcr.io/randogoth/deinonyxus
 ```

@@ -1,7 +1,7 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 # image will be published to ghcr.io/<user>/<name>
-name: randofin-os
+name: deinonyxus
 # description will be included in the image's metadata
 description: This is my personal spin based on the latest bluefin image.
 
@@ -18,10 +18,15 @@ modules:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
+  - type: script
+    scripts:
+      - install-nix.sh
+
   - type: systemd
-    user:
+    system:
       enabled:
-        - nix-toolbox-create.service
+        - nix-overlay.service
+        - nix-daemon.service
 
   - type: dnf
     install:
@@ -55,7 +60,6 @@ modules:
         # If no repo information is specified, Flathub will be used by default
         install: # system flatpaks we want all users to have and not remove
           - net.waterfox.waterfox
-          - com.vscodium.codium
           - org.telegram.desktop
         remove: # replace default Firefox with Waterfox
           - org.mozilla.firefox
