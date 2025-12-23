@@ -1,6 +1,6 @@
-# randofin-os &nbsp; [![bluebuild build badge](https://github.com/randogoth/randofin-os/actions/workflows/build.yml/badge.svg)](https://github.com/randogoth/randofin-os/actions/workflows/build.yml)
+# Deinonyxus &nbsp; [![bluebuild build badge](https://github.com/randogoth/deinonyxus/actions/workflows/build.yml/badge.svg)](https://github.com/randogoth/deinonyxus/actions/workflows/build.yml)
 
-randofin-os is a personal spin of the UBlue Bluefin DX image with Nix baked in and a first-login bootstrap for home-manager packages.
+*Deinonyxus* is a personal spin of the UBlue Bluefin DX image with experimental Nix package manager baked in (borrowed from the great [Daemonix](https://github.com/DXC-0/daemonix/) image) and a first-login bootstrap for `home-manager` packages.
 
 ## What’s inside
 - Base: `ghcr.io/ublue-os/bluefin-dx:latest` without Cockpit, Docker, Firefox, VS Code
@@ -11,7 +11,7 @@ randofin-os is a personal spin of the UBlue Bluefin DX image with Nix baked in a
 
 ## First login behavior
 - Triggers for each non-root user on their first session.
-- Writes state to `~/.local/state/randofin-os/nixpkgs-init.done`; delete it to rerun.
+- Writes state to `~/.local/state/deinonyxus/nixpkgs-init.done`; delete it to rerun.
 - Bootstraps `~/.config/home-manager/home.nix` and runs `home-manager switch` with the package set above.
 
 ## Install / Rebase
@@ -20,11 +20,11 @@ randofin-os is a personal spin of the UBlue Bluefin DX image with Nix baked in a
 
 ```bash
 # First pull unsigned to get signing policy
-rpm-ostree rebase ostree-unverified-registry:ghcr.io/randogoth/randofin-os:latest
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/randogoth/deinonyxus:latest
 systemctl reboot
 
 # Then move to the signed image
-rpm-ostree rebase ostree-image-signed:docker://ghcr.io/randogoth/randofin-os:latest
+rpm-ostree rebase ostree-image-signed:docker://ghcr.io/randogoth/deinonyxus:latest
 systemctl reboot
 ```
 
@@ -38,5 +38,5 @@ bluebuild build --recipe recipes/recipe.yml
 ## Signature verification
 Images are signed with Sigstore/cosign. Verify with the repo's `cosign.pub`:
 ```bash
-cosign verify --key cosign.pub ghcr.io/randogoth/randofin-os
+cosign verify --key cosign.pub ghcr.io/randogoth/deinonyxus
 ```

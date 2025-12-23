@@ -1,13 +1,13 @@
 [Unit]
 Description=Install Nix Home Manager and packages on first login
 ConditionUser=!root
-ConditionPathExists=!%h/.local/state/randofin-os/nixpkgs-init.done
+ConditionPathExists=!%h/.local/state/deinonyxus/nixpkgs-init.done
 
 [Service]
 Type=oneshot
-ExecStart=/usr/libexec/randofin-os/nixpkgs.sh
-ExecStartPost=/usr/bin/mkdir -p %h/.local/state/randofin-os
-ExecStartPost=/usr/bin/touch %h/.local/state/randofin-os/nixpkgs-init.done
+ExecStart=/usr/libexec/deinonyxus/nixpkgs.sh
+ExecStartPost=/usr/bin/mkdir -p %h/.local/state/deinonyxus
+ExecStartPost=/usr/bin/touch %h/.local/state/deinonyxus/nixpkgs-init.done
 
 [Install]
 WantedBy=default.target
