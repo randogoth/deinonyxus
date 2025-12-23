@@ -60,10 +60,13 @@ modules:
         # If no repo information is specified, Flathub will be used by default
         install: # system flatpaks we want all users to have and not remove
           - net.waterfox.waterfox
-          - com.vscodium.codium
           - org.telegram.desktop
         remove: # replace default Firefox with Waterfox
           - org.mozilla.firefox
       - scope: user # Also add Flathub user repo, but no user packages
+
+  - type: script
+    scripts:
+      - nixpkgs.sh
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
