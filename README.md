@@ -1,18 +1,18 @@
 # Deinonyxus &nbsp; [![bluebuild build badge](https://github.com/randogoth/deinonyxus/actions/workflows/build.yml/badge.svg)](https://github.com/randogoth/deinonyxus/actions/workflows/build.yml)
 
-*Deinonyxus* is a personal spin of the UBlue Bluefin DX image with experimental Nix package manager baked in (borrowed from the great [Daemonix](https://github.com/DXC-0/daemonix/) image) and a first-login bootstrap for `home-manager` packages.
+*Deinonyxus* is a personal spin of the UBlue Bluefin DX image with experimental Nix package manager baked in (borrowed from the great [Daemonix](https://github.com/DXC-0/daemonix/) image) and a first-login bootstrap for `nix/home-manager` like declarative package management using [curator](https://codeberg.org/randogoth/curator).
 
 ## What’s inside
 - Base: `ghcr.io/ublue-os/bluefin-dx:latest` without Cockpit, Docker, Firefox, VS Code
 - Nix: multi-user install baked in; `nix-overlay.service` and `nix-daemon.service` enabled.
-- First-login bootstrap: installs nix packages `uv micro vscodium mc` via `home-manager`.
-- System packages added: `syncthing`, `waydroid`;
+- First-login bootstrap: installs nix packages `micro vscodium mc` via `curator`.
+- System packages added: `syncthing`, `uv`, `waydroid`;
 - System flatpaks added: Telegram Desktop, Waterfox
 
 ## First login behavior
 - Triggers for each non-root user on their first session.
 - Writes state to `~/.local/state/deinonyxus/curator-init.done`; delete it to rerun.
-- Bootstraps `~/.config/home-manager/home.nix` and runs `home-manager switch` with the package set above.
+- Bootstraps `~/.config/curator/inventory.toml` and runs `curator switch` with the packages set above.
 
 ## Install / Rebase
 > [!WARNING]
