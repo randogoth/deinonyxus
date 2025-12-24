@@ -32,6 +32,7 @@ modules:
     install:
       packages:
         - syncthing
+        - uv
         - waydroid
     remove:
       packages:

@@ -1,13 +1,13 @@
 [Unit]
 Description=Install Nix Home Manager and packages on first login
 ConditionUser=!root
-ConditionPathExists=!%h/.local/state/deinonyxus/nixpkgs-init.done
+ConditionPathExists=!%h/.local/state/deinonyxus/curator-init.done
 
 [Service]
 Type=oneshot
-ExecStart=/usr/libexec/deinonyxus/nixpkgs.sh
+ExecStart=/usr/libexec/deinonyxus/curator.sh
 ExecStartPost=/usr/bin/mkdir -p %h/.local/state/deinonyxus
-ExecStartPost=/usr/bin/touch %h/.local/state/deinonyxus/nixpkgs-init.done
+ExecStartPost=/usr/bin/touch %h/.local/state/deinonyxus/curator-init.done
 
 [Install]
 WantedBy=default.target

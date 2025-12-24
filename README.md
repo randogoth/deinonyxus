@@ -11,7 +11,7 @@
 
 ## First login behavior
 - Triggers for each non-root user on their first session.
-- Writes state to `~/.local/state/deinonyxus/nixpkgs-init.done`; delete it to rerun.
+- Writes state to `~/.local/state/deinonyxus/curator-init.done`; delete it to rerun.
 - Bootstraps `~/.config/home-manager/home.nix` and runs `home-manager switch` with the package set above.
 
 ## Install / Rebase
