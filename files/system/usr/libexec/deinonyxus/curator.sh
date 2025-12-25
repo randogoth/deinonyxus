@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 set -oue pipefail
 
-uv tool install --from git+https://codeberg.org/randogoth/curator/ curator
+curator_git="--from git+https://codeberg.org/randogoth/curator/"
 
-curator init
-curator add brew.mc
-curator add nix.micro
-curator add nix.vscodium
-curator switch
+uvx $curator_git curator init
+uvx $curator_git curator add brew:mc nix:micro nix:vscodium
+uvx $curator_git curator switch
+uv tool install $curator_git curator
