@@ -30,7 +30,8 @@ modules:
 
   - type: dnf
     repos:
-      files: https://repo.vscodium.dev/vscodium.repo
+      files: 
+      - https://repo.vscodium.dev/vscodium.repo
     install:
       packages:
         - repo: vscodium

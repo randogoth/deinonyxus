@@ -5,8 +5,8 @@
 ## What’s inside
 - Base: `ghcr.io/ublue-os/bluefin-dx:latest` without Cockpit, Docker, Firefox, VS Code
 - Nix: multi-user install baked in; `nix-overlay.service` and `nix-daemon.service` enabled.
-- First-login bootstrap: installs nix packages `devbox`, `mc`, `micro`, and `vscodium` via `curator`.
-- System packages added: `syncthing`, `uv`, `waydroid`;
+(D) - First-login bootstrap: installs nix packages `devbox`, `mc`,and `micro` via `curator`
+- System packages added: `syncthing`, `uv`, `vscodium`, `waydroid`;
 - System flatpaks added: Telegram Desktop, Waterfox
 
 ## First login behavior
@@ -15,8 +15,6 @@
 - Bootstraps `~/.config/curator/inventory.toml` and runs `curator switch` with the packages set above.
 
 ## Install / Rebase
-> [!WARNING]
-> Uses the Fedora Atomic native container workflow.
 
 ```bash
 # First pull unsigned to get signing policy
