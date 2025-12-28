@@ -29,8 +29,13 @@ modules:
         - nix-daemon.service
 
   - type: dnf
+    repos:
+      files: https://repo.vscodium.dev/vscodium.repo
     install:
       packages:
+        - repo: vscodium
+          packages:
+          - codium
         - syncthing
         - uv
         - waydroid
