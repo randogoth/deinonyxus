@@ -7,7 +7,7 @@
 - Lix: multi-user install baked in with persistence at `/var/home/nix`; `nix-daemon.service` enabled.
 (D) - First-login bootstrap: installs Lix/nix packages `devbox`, `mc`, and `micro` via `curator`
 - System packages added: `syncthing`, `uv`, `vscodium`, `waydroid`;
-- System flatpaks added: Telegram Desktop, Waterfox
+- System flatpaks added: Telegram Desktop, Zen Browser
 
 ## First login behavior
 - Triggers for each non-root user on their first session.
