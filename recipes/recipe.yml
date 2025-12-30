@@ -3,7 +3,7 @@
 # image will be published to ghcr.io/<user>/<name>
 name: deinonyxus
 # description will be included in the image's metadata
-description: This is my personal spin based on the latest bluefin image.
+description: Bluefin DX with Nix and sprinkles.
 
 # the base image to build on top of (FROM) and the version tag to use
 base-image: ghcr.io/ublue-os/bluefin-dx
@@ -20,7 +20,7 @@ modules:
 
   - type: script
     scripts:
-      - install-nix.sh
+      - install-lix.sh
 
   - type: systemd
     system:
@@ -60,13 +60,17 @@ modules:
         - containerd
         - moby-engine
 
+  - type: justfiles
+    include:
+      - nixpkgs.just
+
   - type: default-flatpaks
     configurations:
       - notify: true # Send notification after install/uninstall is finished (true/false)
         scope: system
         # If no repo information is specified, Flathub will be used by default
         install: # system flatpaks we want all users to have and not remove
-          - net.waterfox.waterfox
+          - app.zen_browser.zen
           - org.telegram.desktop
         remove: # replace default Firefox with Waterfox
           - org.mozilla.firefox
