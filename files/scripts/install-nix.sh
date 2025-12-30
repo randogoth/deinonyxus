@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-rpm_url="https://nix-community.github.io/nix-installers/nix/x86_64/nix-multi-user-2.24.10.rpm"
+rpm_url="https://nix-community.github.io/nix-installers/lix/x86_64/lix-multi-user-2.91.1.rpm"
 
 install -d /usr/share/nix-store /var/lib/nix-store /var/cache/nix-store /nix
 
