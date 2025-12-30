@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# === INSTALL LIX FROM RPM ===
+
 rpm_url="https://nix-community.github.io/nix-installers/lix/x86_64/lix-multi-user-2.91.1.rpm"
 
 install -d /usr/share/nix-store /var/lib/nix-store /var/cache/nix-store /nix /etc/nix
@@ -10,6 +12,9 @@ export SYSTEMD_OFFLINE=1
 
 # Install the RPM; allow missing GPG key since we fetch directly by URL.
 dnf install -y --nogpgcheck "$rpm_url"
+
+
+# === ADD MISSING LIX CACHE ACCESS PUBKEY ===
 
 nix_conf=/etc/nix/nix.conf
 lix_cache_url="https://cache.lix.systems/"
@@ -35,14 +40,8 @@ ensure_list_value() {
 ensure_list_value "substituters" "$lix_cache_url"
 ensure_list_value "trusted-public-keys" "$lix_cache_key"
 
-# # Ensure the overlay mount service is enabled so /nix is populated on boot.
-# mkdir -p /etc/systemd/system/multi-user.target.wants
-# ln -sf /usr/lib/systemd/system/nix-overlay.service /etc/systemd/system/multi-user.target.wants/nix-overlay.service
+# === MOVE INITIAL NIX STORE TO LOWERDIR ===
 
-# Move the pre-populated store out of /nix so it can serve as the immutable lowerdir.
 if compgen -G "/nix/*" >/dev/null; then
   mv /nix/* /usr/share/nix-store/
 fi
-
-# The RPM %post handles sysusers/tmpfiles; if we ran with SYSTEMD_OFFLINE the
-# post scripts are still executed, so no extra calls are needed here.

@@ -9,10 +9,14 @@
 - System packages added: `syncthing`, `uv`, `vscodium`, `waydroid`;
 - System flatpaks added: Telegram Desktop, Zen Browser
 
-## First login behavior
+## First login
 - Triggers for each non-root user on their first session.
 - Writes state to `~/.local/state/deinonyxus/curator-init.done`; delete it to rerun.
 - Bootstraps `~/.config/curator/inventory.toml` and runs `curator switch` with the packages set above.
+
+## Just Recipes
+- `upgrade-nix`: upgrades to the latest version of Lix via the user profile. Replaces `nix upgrade-nix` which does not work with an immutable lowerdir `/nix/store` folder
+- `install-nix-software-center`: installs a graphical app store for Nix packages
 
 ## Install / Rebase
 
@@ -30,7 +34,7 @@ The `latest` tag always tracks the latest build for the Fedora base set in `reci
 
 ## Building locally
 ```bash
-bluebuild build --recipe recipes/recipe.yml
+bluebuild build
 ```
 
 ## Signature verification
