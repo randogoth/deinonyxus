@@ -42,8 +42,10 @@ modules:
         - repo: hardware_razer
           packages:
           - openrazer-daemon
-          - python3-openrazer
+          - openrazer-kernel-modules-dkms
           - openrazer-meta
+          - python3-openrazer
+        - dkms
         - python3-numpy
         - python3-setproctitle
         - python3-daemonize
@@ -68,6 +70,8 @@ modules:
         - docker-ce-rootless-extras
         - docker-compose-plugin
         - docker-model-plugin
+        - kmod-openrazer
+        - openrazer-kmod-common
 
   - type: justfiles
     include:
