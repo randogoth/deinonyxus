@@ -33,26 +33,14 @@ modules:
       files:
         add:
           - https://repo.vscodium.dev/vscodium.repo
-          - https://openrazer.github.io/hardware:razer.repo
     install:
       packages:
         - repo: vscodium
           packages:
           - codium
-        - repo: hardware_razer
-          packages:
-          - openrazer-daemon
-          - openrazer-kernel-modules-dkms
-          - openrazer-meta
-          - python3-openrazer
-        - dkms
-        - python3-numpy
-        - python3-setproctitle
-        - python3-daemonize
         - syncthing
         - uv
         - waydroid
-        - xautomation
     remove:
       packages:
         - android-tools
@@ -70,8 +58,6 @@ modules:
         - docker-ce-rootless-extras
         - docker-compose-plugin
         - docker-model-plugin
-        - kmod-openrazer
-        - openrazer-kmod-common
 
   - type: justfiles
     include:
