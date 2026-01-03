@@ -13,6 +13,16 @@ image-version: latest # latest is also supported if you want new updates ASAP
 # you can include multiple instances of the same module
 modules:
 
+  - type: os-release
+    properties:
+      ID: deinonyxus
+      NAME: Deinonyxus
+      PRETTY_NAME: Deinonyxus (Bluefin DX)
+      DEFAULT_HOSTNAME: deinonyxus
+      HOME_URL: https://codeberg.org/randogoth/deinonyxus
+      SUPPORT_URL: https://codeberg.org/randogoth/deinonyxus/issues
+      BUG_REPORT_URL: https://codeberg.org/randogoth/deinonyxus/issues
+
   - type: files
     files:
       - source: system
