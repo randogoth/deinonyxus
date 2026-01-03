@@ -2,13 +2,14 @@
 Description=Mount OverlayFS for /nix
 DefaultDependencies=no
 After=local-fs.target
-Before=nix-daemon.service
+Before=systemd-tmpfiles-setup.service nix-daemon.service nix-daemon.socket
 ConditionPathExists=/usr/bin/mount-nix-overlay.sh
 
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/mount-nix-overlay.sh
+ExecStartPost=/usr/bin/systemd-tmpfiles --create /usr/lib/tmpfiles.d/nix-daemon.conf
 RemainAfterExit=yes
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=sysinit.target

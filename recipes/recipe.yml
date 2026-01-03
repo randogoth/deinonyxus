@@ -27,6 +27,7 @@ modules:
       enabled:
         - nix-overlay.service
         - nix-daemon.service
+        - nix-daemon.socket
 
   - type: dnf
     repos:
