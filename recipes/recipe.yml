@@ -41,13 +41,17 @@ modules:
         - repo: vscodium
           packages:
           - codium
+        - dkms
         - openrazer-daemon
+        - openrazer-kernel-modules-dkms
         - syncthing
         - uv
         - waydroid
         - xautomation
     remove:
       packages:
+        - kmod-openrazer
+        - openrazer-kmod-common
         - android-tools
         - cockpit-bridge
         - cockpit-machines
