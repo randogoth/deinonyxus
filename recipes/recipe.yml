@@ -76,6 +76,7 @@ modules:
         install: # system flatpaks we want all users to have and not remove
           - app.zen_browser.zen
           - org.telegram.desktop
+          - app.polychromatic.controller
         remove: # replace default Firefox with Waterfox
           - org.mozilla.firefox
       - scope: user # Also add Flathub user repo, but no user packages
