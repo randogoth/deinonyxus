@@ -2,7 +2,7 @@
 
 *Deinonyxus* is a personal spin of the UBlue Bluefin DX image with the 🍦[Lix](https://lix.systems/) flavored Nix package manager baked in and a first-login bootstrap for simple declarative package management using [curator](https://codeberg.org/randogoth/curator).
 
-The overlay mount approach was directly borrowed from the [Daemonix](https://github.com/DXC-0/daemonix/) Silverblue/Nix image.
+The Nix store is seeded into `/usr/share/nix-store` in the image and bind-mounted from `/var/lib/nix-store` to `/nix` on boot to avoid overlay stacking limits on composefs/ostree.
 
 ## What’s inside
 - Base: `ghcr.io/ublue-os/bluefin-dx:latest` without Cockpit, Docker, Firefox, VS Code

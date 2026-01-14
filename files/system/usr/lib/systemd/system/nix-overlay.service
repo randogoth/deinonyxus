@@ -1,14 +1,14 @@
 [Unit]
-Description=Mount OverlayFS for /nix
+Description=Bind-mount /var/lib/nix-store to /nix
 DefaultDependencies=no
 After=local-fs.target
-Before=systemd-tmpfiles-setup.service nix-daemon.service nix-daemon.socket
-ConditionPathExists=/usr/bin/mount-nix-overlay.sh
+RequiresMountsFor=/var /var/lib/nix-store
+Before=nix-daemon.service nix-daemon.socket
+ConditionPathExists=/usr/bin/mount-nix.sh
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/mount-nix-overlay.sh
-ExecStartPost=/usr/bin/systemd-tmpfiles --create /usr/lib/tmpfiles.d/nix-daemon.conf
+ExecStart=/usr/bin/mount-nix.sh
 RemainAfterExit=yes
 
 [Install]
