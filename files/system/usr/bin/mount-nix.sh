@@ -14,10 +14,24 @@ copy_seed_store() {
   fi
 }
 
+ensure_system_profile() {
+  local seed_profile="/usr/share/nix-store/var/nix/profiles/system"
+  local target_profile="/var/lib/nix-store/var/nix/profiles/system"
+
+  mkdir -p /var/lib/nix-store/var/nix/profiles
+
+  if { [ ! -e "$target_profile" ] || [ -L "$target_profile" ] && [ ! -e "$(readlink -f "$target_profile")" ]; } \
+     && [ -e "$seed_profile" ]; then
+    cp -a "$seed_profile" "$target_profile"
+  fi
+}
+
 if ! mountpoint -q /nix; then
   if [ -z "$(ls -A /var/lib/nix-store 2>/dev/null)" ] && compgen -G "/usr/share/nix-store/*" >/dev/null; then
     copy_seed_store
   fi
+
+  ensure_system_profile
 
   mount --bind /var/lib/nix-store /nix
   mount -o remount,bind,exec /nix
