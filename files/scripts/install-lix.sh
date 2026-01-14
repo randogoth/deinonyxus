@@ -5,7 +5,7 @@ set -euo pipefail
 
 rpm_url="https://nix-community.github.io/nix-installers/lix/x86_64/lix-multi-user-2.91.1.rpm"
 
-install -d /usr/share/nix-store /var/lib/nix-store /var/cache/nix-store /nix /etc/nix
+install -d /usr/share/nix-store /var/lib/nix-store /nix /etc/nix
 
 # Avoid systemd calls during RPM %post in the image build environment.
 export SYSTEMD_OFFLINE=1
@@ -40,8 +40,9 @@ ensure_list_value() {
 ensure_list_value "substituters" "$lix_cache_url"
 ensure_list_value "trusted-public-keys" "$lix_cache_key"
 
-# === MOVE INITIAL NIX STORE TO LOWERDIR ===
+# === SEED STORE FOR FIRST BOOT (copied into /var on boot) ===
 
 if compgen -G "/nix/*" >/dev/null; then
-  mv /nix/* /usr/share/nix-store/
+  rsync -aH --delete /nix/ /usr/share/nix-store/
+  rm -rf /nix/*
 fi

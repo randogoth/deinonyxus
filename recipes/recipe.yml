@@ -80,7 +80,7 @@ modules:
         scope: system
         # If no repo information is specified, Flathub will be used by default
         install: # system flatpaks we want all users to have and not remove
-          - app.zen_browser.zen
+          - net.waterfox.waterfox
           - org.telegram.desktop
         remove: # replace default Firefox with Waterfox
           - org.mozilla.firefox
