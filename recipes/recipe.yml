@@ -21,7 +21,6 @@ modules:
   - type: script
     scripts:
       - install-lix.sh
-      - ensure-plugdev-defaults.sh
 
   - type: systemd
     system:
