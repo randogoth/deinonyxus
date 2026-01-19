@@ -89,6 +89,9 @@ modules:
         - docker-ce-rootless-extras
         - docker-compose-plugin
         - docker-model-plugin
+        - rofi
+        - rofi-themes
+        - xcb-imdkit
 
   - type: gnome-extensions
     uninstall:

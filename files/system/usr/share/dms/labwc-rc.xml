@@ -80,7 +80,7 @@
     <keybind key="A-Down">
       <action name="SnapToEdge" direction="down" combine="yes" />
     </keybind>
-    <!-- Super release: launch rofi -->
+    <!-- Super release: launch DMS launcher button -->
     <keybind key="Super_L" onRelease="true">
       <action name="Execute">
         <command>dms ipc call widget toggle launcherButton</command>
@@ -91,4 +91,8 @@
   </keyboard>
   <applications>
   </applications>
+  <windowRules>
+    <!-- Disable decorations for Ghostty (cover common app-ids) -->
+    <windowRule identifier="com.mitchellh.ghostty" serverDecoration="no" clientDecoration="no" />
+  </windowRules>
 </labwc_config>

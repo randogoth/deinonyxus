@@ -1,0 +1,3 @@
+# Disable bracketed paste to avoid literal ^[[200~ markers in apps that don't handle it.
+bracketed-paste = false
+custom-shader = user/share/ghostty/cursor-shader.glsl

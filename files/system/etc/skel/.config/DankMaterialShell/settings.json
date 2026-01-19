@@ -1,0 +1,10 @@
+{
+  "customPowerActionLogout": "sh -c 'if [ -n \"${XDG_SESSION_ID:-}\" ]; then loginctl terminate-session \"$XDG_SESSION_ID\"; else loginctl terminate-user \"$USER\"; fi'",
+  "launcherLogoMode": "os",
+  "launcherLogoCustomPath": "",
+  "launcherLogoColorOverride": "",
+  "launcherLogoColorInvertOnMode": false,
+  "launcherLogoBrightness": 0.5,
+  "launcherLogoContrast": 1,
+  "launcherLogoSizeOffset": 0
+}
