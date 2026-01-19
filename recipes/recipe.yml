@@ -38,9 +38,21 @@ modules:
         - nix-overlay.service
         - nix-daemon.service
         - nix-daemon.socket
+    user:
+      enabled:
+        - dms.service
+        - dms.path
+        - labwc-menu-update.service
+        - labwc-menu-update.path
+        - labwc-themerc-update.service
+        - labwc-themerc-update.path
+        - dsearch.service
 
   - type: dnf
     repos:
+      copr:
+        enable:
+          - avengemedia/dms
       files:
         add:
           - https://repo.vscodium.dev/vscodium.repo
@@ -49,6 +61,14 @@ modules:
         - repo: vscodium
           packages:
           - codium
+        - dgop
+        - dms
+        - dsearch
+        - ghostty
+        - labwc
+        - labwc-menu-generator
+        - thunar
+        - jq
         - syncthing
         - uv
         - waydroid
@@ -69,6 +89,16 @@ modules:
         - docker-ce-rootless-extras
         - docker-compose-plugin
         - docker-model-plugin
+
+  - type: gnome-extensions
+    uninstall:
+      - Dash to Dock
+      - GSConnect
+      - Launch New Instance
+      - Search Light
+    install:
+      - Alphabetical App Grid
+      - Hide Top Bar 
 
   - type: justfiles
     include:

@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# Import session environment into the user systemd instance and start DMS + helpers.
+export XDG_CURRENT_DESKTOP=labwc
+export XDG_SESSION_TYPE="${XDG_SESSION_TYPE:-wayland}"
+systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE
+
+# Clear any previous failures so path/service units can start cleanly.
+systemctl --user reset-failed \
+  dms.service \
+  dms.path \
+  labwc-menu-update.service \
+  labwc-menu-update.path \
+  labwc-themerc-update.service \
+  labwc-themerc-update.path >/dev/null 2>&1 || true
+
+# Start/prime DMS and helper generators; path units keep them updated as state changes.
+systemctl --user start \
+  dms.service \
+  dms.path \
+  labwc-menu-update.service \
+  labwc-menu-update.path \
+  labwc-themerc-update.service \
+  labwc-themerc-update.path \
+  graphical-session.target >/dev/null 2>&1 || true

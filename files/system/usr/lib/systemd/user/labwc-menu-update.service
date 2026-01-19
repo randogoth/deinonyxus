@@ -1,0 +1,10 @@
+[Unit]
+Description=Generate Labwc menu with DMS integrations
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/dms/labwc-menu-update.sh
+
+[Install]
+WantedBy=default.target

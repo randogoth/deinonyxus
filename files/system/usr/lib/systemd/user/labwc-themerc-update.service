@@ -1,0 +1,10 @@
+[Unit]
+Description=Generate Labwc themerc from DMS colors
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/dms/labwc-themerc-update.sh
+
+[Install]
+WantedBy=default.target

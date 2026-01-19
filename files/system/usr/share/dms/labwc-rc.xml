@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<labwc_config>
+  <theme>
+    <name>dms-labwc</name>
+    <font name="Inter" size="10" />
+  </theme>
+  <menu>
+    <file>~/.config/labwc/menu.xml</file>
+    <icon-theme>Adwaita</icon-theme>
+    <icon-size>24</icon-size>
+  </menu>
+  <keyboard>
+    <!-- Alt+Tab: cycle between windows -->
+    <keybind key="A-Tab">
+      <action name="NextWindow" />
+    </keybind>
+    <!-- Super+Tab: cycle between windows -->
+    <keybind key="W-Tab">
+      <action name="PreviousWindow" />
+    </keybind>
+    <!-- Control+W: close window -->
+    <keybind key="C-W">
+      <action name="Close" />
+    </keybind>
+    <!-- Control+W: kill window -->
+    <keybind key="C-Q">
+      <action name="Kill" />
+    </keybind>
+    <!-- Alt+F4: close window -->
+    <keybind key="A-F4">
+      <action name="Close" />
+    </keybind>
+    <!-- Super+Enter: open terminal -->
+    <keybind key="W-Return">
+      <action name="Execute">
+        <command>ghostty</command>
+      </action>
+    </keybind>
+    <keybind key="W-T">
+      <action name="Execute">
+        <command>ghostty</command>
+      </action>
+    </keybind>
+    <!-- Super+Left/Right: snap to edge -->
+    <keybind key="W-Left">
+      <action name="SnapToEdge" direction="left" combine="yes" />
+    </keybind>
+    <keybind key="W-Right">
+      <action name="SnapToEdge" direction="right" combine="yes" />
+    </keybind>
+    <!-- Super+Up/Down: toggle maximize/reset -->
+    <keybind key="W-Up">
+      <action name="ToggleMaximize" direction="both" />
+    </keybind>
+    <keybind key="W-Down">
+      <action name="Unsnap" />
+    </keybind>
+    <!-- Super+m: minimize -->
+    <keybind key="W-m">
+      <action name="Iconify" />
+    </keybind>
+    <!-- Super+F: fullscreen -->
+    <keybind key="W-F">
+      <action name="ToggleFullscreen" />
+    </keybind>
+    <!-- F11: fullscreen -->
+    <keybind key="F11">
+      <action name="ToggleFullscreen" />
+    </keybind>
+    <!-- Alt+directions: tile control -->
+    <keybind key="A-Left">
+      <action name="SnapToEdge" direction="left" combine="yes" />
+    </keybind>
+    <keybind key="A-Right">
+      <action name="SnapToEdge" direction="right" combine="yes" />
+    </keybind>
+    <keybind key="A-Up">
+      <action name="SnapToEdge" direction="up" combine="yes" />
+    </keybind>
+    <keybind key="A-Down">
+      <action name="SnapToEdge" direction="down" combine="yes" />
+    </keybind>
+    <!-- Super release: launch rofi -->
+    <keybind key="Super_L" onRelease="true">
+      <action name="Execute">
+        <command>dms ipc call widget toggle launcherButton</command>
+      </action>
+    </keybind>
+    <keybind key="A-S-Tab" />
+    <keybind key="W-a" />
+  </keyboard>
+  <applications>
+  </applications>
+</labwc_config>

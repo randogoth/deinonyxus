@@ -1,0 +1,9 @@
+[Unit]
+Description=Start DMS when a Wayland socket appears
+
+[Path]
+PathExistsGlob=%t/wayland-*
+Unit=dms.service
+
+[Install]
+WantedBy=default.target
