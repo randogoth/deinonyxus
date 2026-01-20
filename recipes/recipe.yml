@@ -68,6 +68,7 @@ modules:
         - dsearch
         - ghostty
         - flameshot
+        - gamescope
         - gnome-online-accounts-gtk
         - grim
         - labwc
