@@ -75,6 +75,12 @@
     <keybind key="F11">
       <action name="ToggleFullscreen" />
     </keybind>
+    <!-- Print Screen: launch Flameshot -->
+    <keybind key="Print">
+      <action name="Execute">
+        <command>flameshot gui</command>
+      </action>
+    </keybind>
     <!-- Alt+directions: tile control -->
     <keybind key="A-Left">
       <action name="SnapToEdge" direction="left" combine="yes" />

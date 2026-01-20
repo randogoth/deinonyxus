@@ -22,6 +22,8 @@ systemctl --user reset-failed \
   labwc-themerc-update.path \
   xdg-desktop-portal.service \
   xdg-desktop-portal-wlr.service \
+  flameshot-theme-update.service \
+  flameshot-theme-update.path \
   flameshot.service >/dev/null 2>&1 || true
 
 # Start/prime DMS and helper generators; path units keep them updated as state changes.
@@ -34,5 +36,7 @@ systemctl --user start \
   labwc-themerc-update.path \
   xdg-desktop-portal-wlr.service \
   xdg-desktop-portal.service \
+  flameshot-theme-update.service \
+  flameshot-theme-update.path \
   flameshot.service \
   graphical-session.target >/dev/null 2>&1 || true

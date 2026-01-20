@@ -46,6 +46,8 @@ modules:
         - labwc-themerc-update.path
         - dms-gtk-theme.service
         - dms-gtk-theme.path
+        - flameshot-theme-update.service
+        - flameshot-theme-update.path
         - dsearch.service
 
   - type: dnf
@@ -66,12 +68,14 @@ modules:
         - dsearch
         - ghostty
         - flameshot
+        - gnome-online-accounts-gtk
         - grim
         - labwc
         - labwc-menu-generator
         - thunar
         - jq
         - papirus-icon-theme
+        - papirus-folders
         - syncthing
         - uv
         - wayland-utils

@@ -1,0 +1,10 @@
+[Unit]
+Description=Update Flameshot colors from DMS palette
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/dms/flameshot-theme-update.sh
+
+[Install]
+WantedBy=default.target

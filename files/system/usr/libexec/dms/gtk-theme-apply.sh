@@ -9,6 +9,7 @@ gtk4_dir="$config_dir/gtk-4.0"
 gtk3_colors="$gtk3_dir/dank-colors.css"
 gtk4_colors="$gtk4_dir/dank-colors.css"
 colors_json="$HOME/.cache/DankMaterialShell/dms-colors.json"
+settings_json="$config_dir/DankMaterialShell/settings.json"
 theme_name=$(awk -F= '/^gtk-theme-name=/{print $2}' "$gtk3_dir/settings.ini" 2>/dev/null | head -n1)
 [ -n "$theme_name" ] || theme_name="adw-gtk3"
 theme3_path="/usr/share/themes/$theme_name/gtk-3.0/gtk.css"
@@ -25,6 +26,21 @@ if [ ! -x "$gtk_apply_script" ]; then
 fi
 
 "$gtk_apply_script" "$config_dir"
+
+# Sync GTK icon theme with DMS preference (falls back to Papirus-Dark).
+icon_theme=$(jq -r '.iconTheme // empty' "$settings_json" 2>/dev/null)
+[ -n "$icon_theme" ] || icon_theme="Papirus-Dark"
+if command -v gsettings >/dev/null 2>&1; then
+  gsettings set org.gnome.desktop.interface icon-theme "$icon_theme" >/dev/null 2>&1 || true
+fi
+for ini in "$gtk3_dir/settings.ini" "$gtk4_dir/settings.ini"; do
+  [ -f "$ini" ] || continue
+  if grep -q '^gtk-icon-theme-name=' "$ini"; then
+    sed -i "s/^gtk-icon-theme-name=.*/gtk-icon-theme-name=${icon_theme}/" "$ini"
+  else
+    printf '\n[Settings]\ngtk-icon-theme-name=%s\n' "$icon_theme" >> "$ini"
+  fi
+done
 
 # Ensure the user gtk.css includes the base theme followed by DMS colors (no recursive imports).
 mkdir -p "$gtk3_dir" "$gtk4_dir"
