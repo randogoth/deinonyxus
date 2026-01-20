@@ -1,5 +1,5 @@
 {
-  "customPowerActionLogout": "sh -c 'if [ -n \"${XDG_SESSION_ID:-}\" ]; then loginctl terminate-session \"$XDG_SESSION_ID\"; else loginctl terminate-user \"$USER\"; fi'",
+  "customPowerActionLogout": "killall -s SIGTERM labwc",
   "launcherLogoMode": "os",
   "launcherLogoCustomPath": "",
   "launcherLogoColorOverride": "",

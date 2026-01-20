@@ -76,6 +76,8 @@ modules:
         - uv
         - wayland-utils
         - waydroid
+        - xdg-desktop-portal
+        - xdg-desktop-portal-wlr
     remove:
       packages:
         - android-tools
@@ -93,9 +95,6 @@ modules:
         - docker-ce-rootless-extras
         - docker-compose-plugin
         - docker-model-plugin
-        - rofi
-        - rofi-themes
-        - xcb-imdkit
 
   - type: gnome-extensions
     uninstall:

@@ -1,9 +1,16 @@
 #!/bin/sh
 
 # Import session environment into the user systemd instance and start DMS + helpers.
-export XDG_CURRENT_DESKTOP=labwc
+# Include wlroots in XDG_CURRENT_DESKTOP so the wlroots portal backend is used.
+export XDG_CURRENT_DESKTOP="labwc:wlroots"
+export XDG_SESSION_DESKTOP="${XDG_SESSION_DESKTOP:-labwc}"
 export XDG_SESSION_TYPE="${XDG_SESSION_TYPE:-wayland}"
-systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE
+systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP XDG_SESSION_TYPE
+
+# Make sure dbus-activated services (like xdg-desktop-portal) see the session env.
+if command -v dbus-update-activation-environment >/dev/null 2>&1; then
+  dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP XDG_SESSION_TYPE
+fi
 
 # Clear any previous failures so path/service units can start cleanly.
 systemctl --user reset-failed \
@@ -12,7 +19,10 @@ systemctl --user reset-failed \
   labwc-menu-update.service \
   labwc-menu-update.path \
   labwc-themerc-update.service \
-  labwc-themerc-update.path >/dev/null 2>&1 || true
+  labwc-themerc-update.path \
+  xdg-desktop-portal.service \
+  xdg-desktop-portal-wlr.service \
+  flameshot.service >/dev/null 2>&1 || true
 
 # Start/prime DMS and helper generators; path units keep them updated as state changes.
 systemctl --user start \
@@ -22,4 +32,7 @@ systemctl --user start \
   labwc-menu-update.path \
   labwc-themerc-update.service \
   labwc-themerc-update.path \
+  xdg-desktop-portal-wlr.service \
+  xdg-desktop-portal.service \
+  flameshot.service \
   graphical-session.target >/dev/null 2>&1 || true
