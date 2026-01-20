@@ -23,7 +23,7 @@
       <action name="Close" />
     </keybind>
     <!-- Control+W: kill window -->
-    <keybind key="C-Q">
+    <keybind key="W-Q">
       <action name="Kill" />
     </keybind>
     <!-- Alt+F4: close window -->
@@ -59,6 +59,14 @@
     <keybind key="W-m">
       <action name="Iconify" />
     </keybind>
+    <keybind key="W-d">
+      <action name="ForEach">
+      	<query/>
+      	<then>
+      		<action name="Iconify" />
+      	</then>
+      </action>
+    </keybind>
     <!-- Super+F: fullscreen -->
     <keybind key="W-F">
       <action name="ToggleFullscreen" />
@@ -85,6 +93,9 @@
       <action name="Execute">
         <command>dms ipc call widget toggle launcherButton</command>
       </action>
+    </keybind>
+    <keybind key="F9">
+      <action name="ShowMenu" menu="root-menu"/>
     </keybind>
     <keybind key="A-S-Tab" />
     <keybind key="W-a" />

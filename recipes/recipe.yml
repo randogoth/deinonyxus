@@ -40,12 +40,12 @@ modules:
         - nix-daemon.socket
     user:
       enabled:
-        - dms.service
-        - dms.path
         - labwc-menu-update.service
         - labwc-menu-update.path
         - labwc-themerc-update.service
         - labwc-themerc-update.path
+        - dms-gtk-theme.service
+        - dms-gtk-theme.path
         - dsearch.service
 
   - type: dnf
@@ -65,12 +65,16 @@ modules:
         - dms
         - dsearch
         - ghostty
+        - flameshot
+        - grim
         - labwc
         - labwc-menu-generator
         - thunar
         - jq
+        - papirus-icon-theme
         - syncthing
         - uv
+        - wayland-utils
         - waydroid
     remove:
       packages:
@@ -106,6 +110,7 @@ modules:
   - type: justfiles
     include:
       - nixpkgs.just
+      - ghostty.just
 
   - type: default-flatpaks
     configurations:

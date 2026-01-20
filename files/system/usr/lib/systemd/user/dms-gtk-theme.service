@@ -1,0 +1,10 @@
+[Unit]
+Description=Apply GTK theming from DMS colors
+After=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/dms/gtk-theme-apply.sh
+
+[Install]
+WantedBy=default.target

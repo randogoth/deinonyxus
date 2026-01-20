@@ -6,5 +6,9 @@
   "launcherLogoColorInvertOnMode": false,
   "launcherLogoBrightness": 0.5,
   "launcherLogoContrast": 1,
-  "launcherLogoSizeOffset": 0
+  "launcherLogoSizeOffset": 0,
+  "iconTheme": "Papirus",
+  "gtkThemingEnabled": true,
+  "runDmsMatugenTemplates": true,
+  "matugenTemplateGtk": true
 }
