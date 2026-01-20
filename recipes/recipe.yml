@@ -76,7 +76,6 @@ modules:
         - thunar
         - jq
         - papirus-icon-theme
-        - papirus-folders
         - syncthing
         - uv
         - wayland-utils
@@ -113,6 +112,7 @@ modules:
 
   - type: justfiles
     include:
+      - papirus.just
       - nixpkgs.just
       - ghostty.just
 
