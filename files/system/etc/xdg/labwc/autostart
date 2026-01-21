@@ -5,7 +5,8 @@
 export XDG_CURRENT_DESKTOP="labwc:wlroots"
 export XDG_SESSION_DESKTOP="${XDG_SESSION_DESKTOP:-labwc}"
 export XDG_SESSION_TYPE="${XDG_SESSION_TYPE:-wayland}"
-export XDG_DATA_DIRS="${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+# Default XDG_DATA_DIRS so DMS/launchers see Flatpaks on first login.
+export XDG_DATA_DIRS="${XDG_DATA_DIRS:-$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share}"
 systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP XDG_SESSION_TYPE XDG_DATA_DIRS
 
 # Make sure dbus-activated services (like xdg-desktop-portal) see the session env.

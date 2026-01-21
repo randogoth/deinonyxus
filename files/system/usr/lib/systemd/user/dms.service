@@ -11,8 +11,9 @@ Environment=PATH=/usr/bin
 Environment=XDG_SESSION_TYPE=wayland
 Environment=XDG_CURRENT_DESKTOP=labwc
 Environment=QT_QPA_PLATFORM=wayland
+Environment=XDG_DATA_DIRS=%h/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
 PassEnvironment=XDG_DATA_DIRS XDG_DATA_HOME XDG_CONFIG_HOME XDG_CACHE_HOME
-ExecStart=/usr/bin/dms run --session
+ExecStart=/bin/sh -lc 'export WAYLAND_DISPLAY=${WAYLAND_DISPLAY:-wayland-0}; export DISPLAY=${DISPLAY:-:0}; exec /usr/bin/dms run --session'
 ExecReload=/usr/bin/pkill -USR1 -x dms
 Restart=always
 RestartSec=1.23
