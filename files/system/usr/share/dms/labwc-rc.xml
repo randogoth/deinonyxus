@@ -148,6 +148,11 @@
         <command>dms ipc clipboard open</command>
       </action>
     </keybind>
+    <keybind key="W-L">
+      <action name="Execute">
+        <command>dms ipc call lock lock</command>
+      </action>
+    </keybind>
   </keyboard>
   <applications>
   </applications>
