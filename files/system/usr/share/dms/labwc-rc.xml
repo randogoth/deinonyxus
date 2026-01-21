@@ -97,7 +97,7 @@
     <!-- Print Screen: launch Flameshot -->
     <keybind key="Print">
       <action name="Execute">
-        <command>flameshot gui</command>
+        <command>dms screenshot</command>
       </action>
     </keybind>
     <!-- Super + E: launch Thunar -->

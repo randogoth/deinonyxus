@@ -1,9 +1,0 @@
-[Unit]
-Description=Watch DMS color changes to refresh Flameshot theme
-
-[Path]
-PathChanged=%h/.cache/DankMaterialShell/dms-colors.json
-Unit=flameshot-theme-update.service
-
-[Install]
-WantedBy=default.target
