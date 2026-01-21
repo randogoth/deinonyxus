@@ -66,22 +66,24 @@ modules:
         - dgop
         - dms
         - dsearch
-        - ghostty
         - flameshot
-        - gamescope
+        - ghostty
         - gnome-online-accounts-gtk
         - grim
+        - i2c-tools
+        - jq
+        - khal
         - labwc
         - labwc-menu-generator
-        - thunar
-        - jq
         - papirus-icon-theme
         - syncthing
+        - thunar
         - uv
-        - wayland-utils
         - waydroid
+        - wayland-utils
         - xdg-desktop-portal
         - xdg-desktop-portal-wlr
+- codium
     remove:
       packages:
         - android-tools
@@ -124,6 +126,7 @@ modules:
         install: # system flatpaks we want all users to have and not remove
           - net.waterfox.waterfox
           - org.telegram.desktop
+          - org.freedesktop.Platform.VulkanLayer.gamescope
         remove: # replace default Firefox with Waterfox
           - org.mozilla.firefox
       - scope: user # Also add Flathub user repo, but no user packages
