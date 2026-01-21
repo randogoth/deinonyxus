@@ -4,7 +4,7 @@ After=graphical-session.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/libexec/dms/flameshot-theme-update.sh
+ExecStart=/bin/sh /usr/libexec/dms/flameshot-theme-update.sh
 
 [Install]
 WantedBy=default.target

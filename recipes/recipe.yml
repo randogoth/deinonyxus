@@ -70,8 +70,6 @@ modules:
         - ghostty
         - gnome-online-accounts-gtk
         - grim
-        - i2c-tools
-        - jq
         - khal
         - labwc
         - labwc-menu-generator
@@ -81,7 +79,6 @@ modules:
         - uv
         - waydroid
         - wayland-utils
-        - xdg-desktop-portal
         - xdg-desktop-portal-wlr
     remove:
       packages:

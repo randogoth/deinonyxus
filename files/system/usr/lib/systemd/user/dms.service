@@ -11,6 +11,7 @@ Environment=PATH=/usr/bin
 Environment=XDG_SESSION_TYPE=wayland
 Environment=XDG_CURRENT_DESKTOP=labwc
 Environment=QT_QPA_PLATFORM=wayland
+PassEnvironment=XDG_DATA_DIRS XDG_DATA_HOME XDG_CONFIG_HOME XDG_CACHE_HOME
 ExecStart=/usr/bin/dms run --session
 ExecReload=/usr/bin/pkill -USR1 -x dms
 Restart=always
