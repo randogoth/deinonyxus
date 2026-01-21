@@ -83,7 +83,6 @@ modules:
         - wayland-utils
         - xdg-desktop-portal
         - xdg-desktop-portal-wlr
-- codium
     remove:
       packages:
         - android-tools
