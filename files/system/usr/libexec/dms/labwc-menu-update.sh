@@ -11,7 +11,7 @@ export DBX_PATH="/usr/bin:/usr/local/bin"
 export DMS_BIN="/usr/bin/dms"
 export DMS_PATH="/usr/bin"
 
-desired_logout="sh -c 'if [ -n \"${XDG_SESSION_ID:-}\" ]; then loginctl terminate-session \"$XDG_SESSION_ID\"; else loginctl terminate-user \"$USER\"; fi'"
+desired_logout="killall -s SIGTERM labwc"
 
 # Ensure rc.xml points to the generated menu/theme if it doesn't already.
 rc="$HOME/.config/labwc/rc.xml"

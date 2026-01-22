@@ -6,7 +6,7 @@
   </theme>
   <menu>
     <file>~/.config/labwc/menu.xml</file>
-    <icon-theme>Adwaita</icon-theme>
+    <icon-theme>Papirus-Dark</icon-theme>
     <icon-size>24</icon-size>
   </menu>
   <keyboard>
@@ -125,22 +125,22 @@
     <!-- Volume controls (hardware keys) -->
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
-        <command>pactl set-sink-volume @DEFAULT_SINK@ +5%</command>
+        <command>dms ipc call audio increment 5</command>
       </action>
     </keybind>
     <keybind key="XF86AudioLowerVolume">
       <action name="Execute">
-        <command>pactl set-sink-volume @DEFAULT_SINK@ -5%</command>
+        <command>dms ipc call audio decrement 5</command>
       </action>
     </keybind>
     <keybind key="XF86AudioMute">
       <action name="Execute">
-        <command>pactl set-sink-mute @DEFAULT_SINK@ toggle</command>
+        <command>dms ipc call audio mute</command>
       </action>
     </keybind>
     <keybind key="XF86AudioMicMute">
       <action name="Execute">
-        <command>pactl set-source-mute @DEFAULT_SOURCE@ toggle</command>
+        <command>dms ipc call audio micmute</command>
       </action>
     </keybind>
     <keybind key="W-V">
