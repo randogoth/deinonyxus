@@ -58,11 +58,15 @@ modules:
       files:
         add:
           - https://repo.vscodium.dev/vscodium.repo
+          - https://negativo17.org/repos/fedora-uld.repo
     install:
       packages:
         - repo: vscodium
           packages:
           - codium
+        - repo: fedora-uld
+          packages: 
+          - uld
         - dgop
         - dms
         - dsearch
