@@ -17,7 +17,6 @@ modules:
     properties:
       ID: deinonyxus
       NAME: Deinonyxus
-      PRETTY_NAME: Deinonyxus (Bluefin DX)
       DEFAULT_HOSTNAME: deinonyxus
       HOME_URL: https://codeberg.org/randogoth/deinonyxus
       SUPPORT_URL: https://codeberg.org/randogoth/deinonyxus/issues
@@ -27,6 +26,10 @@ modules:
     files:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+
+  - type: script
+    scripts:
+      - os-release-pretty.sh
 
   - type: script
     scripts:
@@ -40,12 +43,11 @@ modules:
         - nix-daemon.socket
     user:
       enabled:
-        - labwc-menu-update.service
         - labwc-menu-update.path
-        - labwc-themerc-update.service
         - labwc-themerc-update.path
-        - dms-gtk-theme.service
         - dms-gtk-theme.path
+        - dms.path
+        - dms-settings-seed.service
         - dsearch.service
 
   - type: dnf

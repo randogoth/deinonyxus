@@ -9,34 +9,7 @@ export XDG_SESSION_TYPE="${XDG_SESSION_TYPE:-wayland}"
 export XDG_DATA_DIRS="${XDG_DATA_DIRS:-$HOME/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share}"
 systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP XDG_SESSION_TYPE XDG_DATA_DIRS
 
-xdg-settings set default-web-browser dms-open.desktop
-xdg-mime default dms-open.desktop x-scheme-handler/http
-xdg-mime default dms-open.desktop x-scheme-handler/https
-
 # Make sure dbus-activated services (like xdg-desktop-portal) see the session env.
 if command -v dbus-update-activation-environment >/dev/null 2>&1; then
   dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP XDG_SESSION_TYPE XDG_DATA_DIRS
 fi
-
-# Clear any previous failures so path/service units can start cleanly.
-systemctl --user reset-failed \
-  dms.service \
-  dms.path \
-  labwc-menu-update.service \
-  labwc-menu-update.path \
-  labwc-themerc-update.service \
-  labwc-themerc-update.path \
-  xdg-desktop-portal.service \
-  xdg-desktop-portal-wlr.service \
-
-# Start/prime DMS and helper generators; path units keep them updated as state changes.
-systemctl --user start \
-  dms.service \
-  dms.path \
-  labwc-menu-update.service \
-  labwc-menu-update.path \
-  labwc-themerc-update.service \
-  labwc-themerc-update.path \
-  xdg-desktop-portal-wlr.service \
-  xdg-desktop-portal.service \
-  graphical-session.target >/dev/null 2>&1 || true

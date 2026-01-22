@@ -11,33 +11,11 @@ export DBX_PATH="/usr/bin:/usr/local/bin"
 export DMS_BIN="/usr/bin/dms"
 export DMS_PATH="/usr/bin"
 
-desired_logout="killall -s SIGTERM labwc"
-
-# Ensure rc.xml points to the generated menu/theme if it doesn't already.
+# Ensure rc.xml exists locally (seeded via tmpfiles.d); refresh from /etc copy.
 rc="$HOME/.config/labwc/rc.xml"
+rc_source="/etc/xdg/labwc/rc.xml"
 mkdir -p "$(dirname "$rc")"
-cp -f /usr/share/dms/labwc-rc.xml "$rc"
-settings_dir="$HOME/.config/DankMaterialShell"
-settings_file="$settings_dir/settings.json"
-mkdir -p "$settings_dir"
-python3 - "$settings_file" "$desired_logout" <<'PY'
-import json, sys, os
-settings_path = sys.argv[1]
-desired = sys.argv[2]
-data = {}
-if os.path.exists(settings_path):
-    try:
-        with open(settings_path, "r") as f:
-            data = json.load(f)
-    except Exception:
-        data = {}
-if data.get("customPowerActionLogout") != desired:
-    data["customPowerActionLogout"] = desired
-    os.makedirs(os.path.dirname(settings_path), exist_ok=True)
-    with open(settings_path, "w") as f:
-        json.dump(data, f, indent=2)
-PY
-cp -f /usr/share/dms/labwc-rc.xml "$rc"
+cp -f "$rc_source" "$rc"
 
 tmp="$(mktemp)"
 /usr/bin/labwc-menu-generator \

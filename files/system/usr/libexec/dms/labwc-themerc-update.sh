@@ -12,18 +12,6 @@ surface_variant=$(jq -r '.colors.dark.surface_variant // empty' "$colors_json")
 on_surface=$(jq -r '.colors.dark.on_surface // empty' "$colors_json")
 outline=$(jq -r '.colors.dark.outline // empty' "$colors_json")
 
-# Update Ghostty background to match the DMS surface color without overwriting other settings.
-ghostty_cfg="$HOME/.config/ghostty/config"
-mkdir -p "$(dirname "$ghostty_cfg")"
-if [ -f "$ghostty_cfg" ]; then
-  perl -ni -e 'print unless /\\n/' "$ghostty_cfg"
-fi
-if [ -f "$ghostty_cfg" ] && grep -q '^background[[:space:]]*=' "$ghostty_cfg"; then
-  sed -i "s/^background[[:space:]]*=.*/background = ${surface}/" "$ghostty_cfg"
-else
-  printf '\n# Set by labwc-themerc-update from DMS colors\nbackground = %s\n' "$surface" >> "$ghostty_cfg"
-fi
-
 theme_dir="$HOME/.themes/dms-labwc/openbox-3"
 mkdir -p "$theme_dir"
 cat > "$theme_dir/themerc" <<EOF

@@ -3,6 +3,7 @@ Description=Watch DMS color changes to refresh Labwc theme
 
 [Path]
 PathChanged=%h/.cache/DankMaterialShell/dms-colors.json
+Persistent=true
 Unit=labwc-themerc-update.service
 
 [Install]

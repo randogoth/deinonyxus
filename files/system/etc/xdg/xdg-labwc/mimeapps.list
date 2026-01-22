@@ -1,0 +1,4 @@
+[Default Applications]
+x-scheme-handler/http=dms-open.desktop
+x-scheme-handler/https=dms-open.desktop
+text/html=dms-open.desktop

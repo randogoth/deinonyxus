@@ -5,6 +5,8 @@ Description=Watch application desktop entries to refresh Labwc menu
 PathChanged=%h/.local/share/applications
 PathChanged=%h/.local/share/flatpak/exports/share/applications
 PathChanged=/var/lib/flatpak/exports/share/applications
+PathChanged=/usr/share/applications
+Persistent=true
 Unit=labwc-menu-update.service
 
 [Install]
