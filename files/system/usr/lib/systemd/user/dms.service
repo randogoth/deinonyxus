@@ -14,7 +14,7 @@ Environment=XDG_DATA_DIRS=%h/.local/share/flatpak/exports/share:/var/lib/flatpak
 PassEnvironment=XDG_DATA_DIRS XDG_DATA_HOME XDG_CONFIG_HOME XDG_CACHE_HOME
 ExecStart=/bin/sh -lc 'export WAYLAND_DISPLAY=${WAYLAND_DISPLAY:-wayland-0}; export DISPLAY=${DISPLAY:-:0}; exec /usr/bin/dms run --session'
 ExecReload=/usr/bin/pkill -USR1 -x dms
-ExecCondition=/usr/bin/sh -c 'echo "$XDG_CURRENT_DESKTOP" | grep -qi labwc'
+ExecCondition=/usr/bin/bash -lc 'session=${XDG_CURRENT_DESKTOP:-$DESKTOP_SESSION}; echo "$session" | grep -qi labwc'
 Restart=always
 RestartSec=1.23
 TimeoutStopSec=10
