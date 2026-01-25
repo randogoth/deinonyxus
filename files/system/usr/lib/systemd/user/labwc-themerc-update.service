@@ -5,7 +5,7 @@ After=graphical-session.target
 [Service]
 Type=oneshot
 ExecStart=/usr/libexec/dms/labwc-themerc-update.sh
-ExecCondition=/usr/bin/sh -c 'echo "$XDG_CURRENT_DESKTOP" | grep -qi labwc'
+ConditionEnvironment=XDG_CURRENT_DESKTOP=labwc
 
 [Install]
 WantedBy=default.target
