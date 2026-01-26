@@ -30,6 +30,7 @@ modules:
   - type: script
     scripts:
       - os-release-pretty.sh
+      - ensure-labwc-autostart.sh
 
   - type: script
     scripts:

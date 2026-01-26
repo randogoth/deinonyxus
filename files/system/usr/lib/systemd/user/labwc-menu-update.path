@@ -1,5 +1,7 @@
 [Unit]
 Description=Watch application desktop entries to refresh Labwc menu
+ConditionEnvironment=XDG_CURRENT_DESKTOP=labwc
+ConditionEnvironment=|XDG_CURRENT_DESKTOP=labwc:wlroots
 
 [Path]
 PathChanged=%h/.local/share/applications

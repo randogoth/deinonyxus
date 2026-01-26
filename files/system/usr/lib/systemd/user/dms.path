@@ -1,5 +1,7 @@
 [Unit]
 Description=Start DMS when a Wayland socket appears
+ConditionEnvironment=XDG_CURRENT_DESKTOP=labwc
+ConditionEnvironment=|XDG_CURRENT_DESKTOP=labwc:wlroots
 
 [Path]
 PathExistsGlob=%t/wayland-*

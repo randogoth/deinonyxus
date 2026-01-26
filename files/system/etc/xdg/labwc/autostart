@@ -13,3 +13,6 @@ systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP 
 if command -v dbus-update-activation-environment >/dev/null 2>&1; then
   dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP XDG_SESSION_TYPE XDG_DATA_DIRS
 fi
+
+# (Re)start the Labwc-only user units now that the environment is imported.
+systemctl --user restart dms.path dms-gtk-theme.path labwc-menu-update.path labwc-themerc-update.path dms.service || true
