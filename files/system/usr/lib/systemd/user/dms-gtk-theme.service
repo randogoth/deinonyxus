@@ -6,6 +6,7 @@ After=graphical-session.target
 Type=oneshot
 ExecStart=/usr/libexec/dms/gtk-theme-apply.sh
 ConditionEnvironment=XDG_CURRENT_DESKTOP=labwc
+ConditionEnvironment=|XDG_CURRENT_DESKTOP=labwc:wlroots
 
 [Install]
 WantedBy=default.target
