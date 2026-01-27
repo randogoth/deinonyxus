@@ -9,6 +9,10 @@
     <icon-theme>Papirus-Dark</icon-theme>
     <icon-size>24</icon-size>
   </menu>
+  <core>
+    <adaptiveSync>fullscreen</adaptiveSync>
+    <allowTearing>no</allowTearing>
+  </core>
   <keyboard>
     <!-- Alt+Tab: cycle between windows -->
     <keybind key="A-Tab">
