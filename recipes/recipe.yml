@@ -47,7 +47,6 @@ modules:
         - labwc-menu-update.path
         - labwc-themerc-update.path
         - dms-gtk-theme.path
-        - dms.path
         - dms-settings-seed.service
         - dsearch.service
 

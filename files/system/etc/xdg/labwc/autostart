@@ -15,4 +15,4 @@ if command -v dbus-update-activation-environment >/dev/null 2>&1; then
 fi
 
 # (Re)start the Labwc-only user units now that the environment is imported.
-systemctl --user restart dms.path dms-gtk-theme.path labwc-menu-update.path labwc-themerc-update.path dms.service || true
+systemctl --user restart dms-gtk-theme.path labwc-menu-update.path labwc-themerc-update.path dms.service || true
