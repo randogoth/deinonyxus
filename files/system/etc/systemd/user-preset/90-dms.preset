@@ -1,0 +1,2 @@
+# Prevent global/user-presets from auto-enabling the vendor unit; we start DMS from Labwc autostart.
+disable dms.service
